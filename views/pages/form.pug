@@ -1,0 +1,17 @@
+include ../includes/mixin.pug
+
+html
+  include ../includes/head.pug
+  body
+    include ../includes/nav.pug
+    div.container
+      h1 Form
+      div.form
+        form(action="/create" method="POST")
+        div
+          +textInput('name', 'Name')
+        div
+          +textInput('email', 'Email:')
+        div
+          input(type="submit")
+    //- include includes/footer.pug
