@@ -1,5 +1,9 @@
 const express = require('express');
 const path = require('path');
+const port = process.env.PORT || 3000;
+const usersFile = require('./users.js');
+const User = usersFile.User;
+const users = usersFile.users;
 
 let app = express();
 
@@ -14,12 +18,26 @@ app.get('/', (req, res) => {
 
 app.get('/form', (req, res) => {
   res.render('pages/form');
+  console.log(users.collection.length);
 });
 
 app.get('/users', (req, res) => {
-  res.render('pages/users');
+  res.render('pages/users', {
+    users: users.collection
+  });
 });
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
-})
+app.post('/create', (req, res) => {
+  let newUser = new User(req.body.username, req.body.name, req.body.email, Number(req.body.age))
+  console.log('new user', newUser);
+  users.addOne(newUser);
+  console.log(`USERS\n`);
+  console.log(users);
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+console.log(users);
+// console.log(user);
