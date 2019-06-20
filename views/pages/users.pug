@@ -20,7 +20,9 @@ html
               div.email #{user.email}
               div.age #{user.age}
               span.edit
-                i.far.fa-edit
-                i.fas.fa-trash
+                a(href='/edituser/'+user.name)
+                  i.far.fa-edit
+                a(href='/deleteuser/'+user.name)
+                  i.fas.fa-trash
         else
           div Sorry, there aren't any users registered.
