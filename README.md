@@ -6,4 +6,5 @@ Project-5: Simple Project Manager __without__ MongoDB
 1. Download the zip file
 2. Run `npm i`
 3. Run `node app` or `nodemon app`
-4. Et Voilà !
+4. Connect to `localhost:3000` in the browser
+5. Et Voilà !
